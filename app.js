@@ -1,20 +1,12 @@
 const path = require('path');
 
-const bodyParser = require('body-parser');
-//Import express
 const express = require('express');
+const bodyParser = require('body-parser');
 
-//Create express App
 const app = express();
 
-//import Routes
-
-const adminData = require('./routes/admin'); 
-const shopRoutes = require('./routes/shop'); 
-
-
-
-//Use middleware
+const adminData = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -23,9 +15,7 @@ app.use('/admin', adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', 'error.html'));
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
-
-
-app.listen(4000);
+app.listen(3000);

@@ -1,4 +1,3 @@
-
 const path = require('path');
 
 const express = require('express');
@@ -8,11 +7,9 @@ const adminData = require('./admin');
 
 const router = express.Router();
 
-//get access to the product
-
-router.get('/', (req, res, next) =>{
-    console.log('shop.js', adminData.products);
-    res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+router.get('/', (req, res, next) => {
+  console.log('shop.js', adminData.products);
+  res.sendFile(path.join(rootDir, 'views', 'shop.html'));
 });
 
 module.exports = router;
